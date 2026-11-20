@@ -1,71 +1,22 @@
-#  Prioridad Alta - Game Priority Booster
+# Prioridad alta para juegos
 
-Esta carpeta contiene los scripts para establecer **prioridad ALTA** en juegos competitivos.
+GamePriorityBooster.ps1 comprueba cada 5 segundos los procesos de $gamProcesses
+y les aplica la prioridad de CPU **High**.
 
-##  Ventajas
-- **Seguro**: No afecta el rendimiento del sistema
-- **Estable**: Recomendado para uso diario
-- **Efectivo**: Mejora notablemente el rendimiento en juegos
+La lista incluye procesos de Valorant, CS2, Fortnite, Arena Breakout, League of
+Legends, Rocket League y PUBG. Los nombres deben coincidir con el proceso real;
+un juego protegido puede rechazar el cambio.
 
-##  Juegos Incluidos
-- Valorant
-- Counter-Strike 2
-- Fortnite
-- Arena Breakout: Infinity
-- League of Legends
-- Rocket League
-- PUBG: BATTLEGROUNDS
+## Uso
 
-##  Cómo Usar
+1. Ejecutá ProbarScript.bat como administrador para ver las acciones en consola.
+2. Abrí un juego de la lista y comprobá su prioridad en el Administrador de tareas.
+3. Usá Ctrl+C para detener el modo visible.
+4. Para iniciar oculto, ejecutá IniciarGameBooster.bat como administrador.
 
-### Para Probar (Modo Visible)
-```
-1. Clic derecho en ProbarScript.bat
-2. Ejecutar como administrador
-3. Inicia tu juego
-4. Verás mensajes cuando detecte el juego
-```
+El modo de prueba cambia prioridades realmente. DetenerGameBooster.bat depende
+de WMIC y no restaura los valores anteriores. Con el monitor detenido, restaurá
+la prioridad manualmente o cerrá y volvé a abrir el juego.
 
-### Para Uso Normal (Segundo Plano)
-```
-1. Clic derecho en IniciarGameBooster.bat
-2. Ejecutar como administrador
-3. El script correrá en segundo plano
-```
-
-### Para Modo Oculto (Sin Ventanas)
-```
-1. Doble clic en IniciarOculto.vbs
-2. Se ejecutará completamente oculto
-```
-
-### Para Detener el Script
-```
-1. Doble clic en DetenerGameBooster.bat
-```
-
-## 📝 Archivos
-- `GamePriorityBooster.ps1` - Script principal
-- `ProbarScript.bat` - Modo de prueba visible
-- `IniciarGameBooster.bat` - Inicio en segundo plano
-- `IniciarOculto.vbs` - Inicio oculto
-- `DetenerGameBooster.bat` - Detener script
-
-## ⚙️ Agregar Más Juegos
-1. Abre `GamePriorityBooster.ps1` con un editor de texto
-2. Busca la sección `$gamProcesses`
-3. Agrega el nombre del proceso (sin .exe):
-```powershell
-$gamProcesses = @(
-    "VALORANT-Win64-Shipping",
-    "cs2",
-    "tu_juego_aqui"  # ← Agregar aquí
-)
-```
-
-## 💡 Tip
-Para encontrar el nombre del proceso de un juego:
-1. Abre el juego
-2. Abre Administrador de tareas (Ctrl+Shift+Esc)
-3. Ve a la pestaña "Detalles"
-4. Busca el proceso del juego (sin el .exe)
+No se garantizan aumentos de FPS ni ausencia de efectos sobre otras aplicaciones.
+Consultá [la guía completa](../README.md) para requisitos y límites.

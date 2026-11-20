@@ -1,68 +1,19 @@
-#  Prioridad Baja - App Priority Lower
+# Prioridad baja para aplicaciones de fondo
 
-Esta carpeta contiene los scripts para establecer **prioridad BAJA (BelowNormal)** en apps que consumen recursos.
+AppsPrioridadBaja.ps1 comprueba cada 5 segundos los procesos de $appProcesses
+y les aplica la prioridad de CPU **Idle**. Incluye Chrome, Brave, Discord y
+procesos de Steam. No elimina procesos ni libera RAM.
 
-##  Ventajas
-- **Menos carga en CPU**: reduce impacto de apps en segundo plano
-- **Mas rendimiento en juegos**: libera recursos para tus juegos
-- **Automatico**: ajusta prioridad cada pocos segundos
+## Uso
 
-##  Apps Incluidas
-- Google Chrome
-- Brave
-- Discord
+1. Revisá la lista y ejecutá ProbarScript.bat como administrador.
+2. Abrí una app incluida y comprobá su prioridad en el Administrador de tareas.
+3. Usá Ctrl+C para detener el modo visible.
+4. Para iniciar oculto, ejecutá IniciarAppsPrioridadBaja.bat como administrador.
 
-##  Como Usar
+El modo de prueba modifica prioridades realmente. Las aplicaciones afectadas
+pueden responder más lento. DetenerAppsPrioridadBaja.bat depende de WMIC y no
+restaura los valores: con el monitor detenido, restauralos manualmente o cerrá
+y volvé a abrir la aplicación.
 
-### Para Probar (Modo Visible)
-```
-1. Clic derecho en ProbarScript.bat
-2. Ejecutar como administrador
-3. Abre Chrome, Brave o Discord
-4. Veras mensajes cuando detecte procesos
-```
-
-### Para Uso Normal (Segundo Plano)
-```
-1. Clic derecho en IniciarAppsPrioridadBaja.bat
-2. Ejecutar como administrador
-3. El script correra en segundo plano
-```
-
-### Para Modo Oculto (Sin Ventanas)
-```
-1. Doble clic en IniciarOculto.vbs
-2. Se ejecutara completamente oculto
-```
-
-### Para Detener el Script
-```
-1. Doble clic en DetenerAppsPrioridadBaja.bat
-```
-
-##  Archivos
-- `AppsPrioridadBaja.ps1` - Script principal
-- `ProbarScript.bat` - Modo de prueba visible
-- `IniciarAppsPrioridadBaja.bat` - Inicio en segundo plano
-- `IniciarOculto.vbs` - Inicio oculto
-- `DetenerAppsPrioridadBaja.bat` - Detener script
-
-## ⚙️ Agregar Mas Apps
-1. Abre `AppsPrioridadBaja.ps1` con un editor de texto
-2. Busca la seccion `$appProcesses`
-3. Agrega el nombre del proceso (sin .exe):
-```powershell
-$appProcesses = @(
-    "chrome",
-    "brave",
-    "discord",
-    "tu_app_aqui"  # <- Agregar aqui
-)
-```
-
-##  Tip
-Para encontrar el nombre exacto del proceso:
-1. Abre la app
-2. Abre Administrador de tareas (Ctrl+Shift+Esc)
-3. Ve a la pestaña "Detalles"
-4. Busca el proceso (sin el .exe)
+Consultá [la guía completa](../README.md) para requisitos y límites.
